@@ -226,22 +226,7 @@ int main(int argc, char* argv[])
 
     // Accept a client socket
     ClientSocket = accept(ListenSocket, NULL, NULL);
-    error = recv(ClientSocket, recvbuf, BUFSIZE, 0);
-    if (error > 0)
-    {
-        recvbuf[error] = 0;
-        cout << "Received query: " << (char*)recvbuf << endl;
-        send(ClientSocket, sendStr.c_str(), strlen(sendStr.c_str()) + 1, 0);
-        cout << "Sent answer: " << sendStr.c_str() << endl;
-    }
-    else
-    {
-        cout << "recv failed: " << WSAGetLastError() << endl;
-        closesocket(ClientSocket);
-        WSACleanup();
-        return 0;
-    }
-
+    send(ClientSocket, sendStr.c_str(), strlen(sendStr.c_str()) + 1, 0);
     if (itsFunc) while (1)
     {
         error = recv(ClientSocket, recvbuf, BUFSIZE, 0);

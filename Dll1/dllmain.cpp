@@ -238,8 +238,8 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 		char param[BUFSIZE];
 		if (!tcp_connect()) break;
 
-		sprintf(recvbuf, "OK");
-		send(ConnectSocket, recvbuf, strlen(recvbuf) + 1, 0);
+		//sprintf(recvbuf, "OK");
+		//send(ConnectSocket, recvbuf, strlen(recvbuf) + 1, 0);
 		recv(ConnectSocket, recvbuf, BUFSIZE, 0);
 
 		int count = 0, pos = 0, paramPos = 0;
